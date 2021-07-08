@@ -1,0 +1,2 @@
+- name: シェルコマンドを実行するタスク
+  shell: hostname >> ~/resultfile

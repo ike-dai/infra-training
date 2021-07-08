@@ -1,0 +1,42 @@
+---
+- name: Nginxをインストール
+  apk:
+    name: nginx
+
+- name: /run/nginxディレクトリを作成
+  file:
+    path: /run/nginx
+    state: directory
+
+- name: /appディレクトリを作成
+  file:
+    path: /app
+    state: directory
+
+- name: index.htmlを配置
+  template:
+    src: ./templates/index.html.j2
+    dest: /app/index.html
+
+- name: Nginxのコンフィグファイルを配置
+  copy:
+    src: ./files/nginx.conf
+    dest: /etc/nginx/conf.d/default.conf
+  register: conf_copy
+
+- name: デバッグ情報の表示
+  debug:
+    msg: "{{ conf_copy }}"
+
+- name: Nginxの稼働状態を確認
+  shell: ps aux | grep nginx | grep -v grep | cat
+  register: nginx_process
+  changed_when: False
+
+- name: Nginxを起動
+  shell: nginx
+  when: nginx_process.stdout == ""
+
+- name: Nginxのコンフィグファイルを読み込む
+  shell: nginx -s reload
+  when: conf_copy.changed
