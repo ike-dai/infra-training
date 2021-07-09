@@ -6,7 +6,7 @@ Start - [1](step1.md) - [2](step2.md) - [3](step3.md) - [4](step4.md) - [5](step
 
 ## 1. インベントリへの追加
 
-インベントリファイル（`/training/01_introduction/inventory`）をエディタで開き、`target01`, `target02`を参考にして`target03`を追加してください。  
+インベントリファイル（`01_introduction/inventory`）をエディタで開き、`target01`, `target02`を参考にして`target03`を追加してください。  
 `target03`として記載する内容は以下になります。<kbd>Ctrl</kbd>+<kbd>S</kbd>でファイル保存するのを忘れないようにご注意ください。
 
 ```yaml

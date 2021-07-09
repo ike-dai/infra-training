@@ -6,7 +6,7 @@ Start - [1](step1.md) - [**2**](step2.md) - [3](step3.md) - [4](step4.md) - [5](
 
 1. ターミナルでコマンドを実行する  
    画面右下のターミナルに`pwd`と入力し、実行してください。  
-   `/training/01_introduction`という文字列が出力されます。
+   `/training/iac/01_introduction`という文字列が出力されます。
 
 2. ファイルを作成する  
    以下のコマンドを実行してください。  
