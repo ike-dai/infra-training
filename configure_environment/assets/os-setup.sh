@@ -22,11 +22,11 @@ yum install -y ansible
 echo "export PS1=\"\[\e[1;36m\][\u@\h \w]\$\[\e[m\] \"" > /etc/profile.d/init-env.sh
 echo "export TZ=Asia/Tokyo" >> /etc/profile.d/init-env.sh
 
-# 資材の配置（見直し予定）
+# 資材の配置
 ## 設定資材の配置
 cd /
-git clone https://github.com/sensq/katacoda-scenarios.git
-cd /katacoda-scenarios/alternative_environment/assets/
+git clone https://github.com/katatr/infra-training.git
+cd /infra-training/configure_environment/assets/
 cp -r configs tools /
 cp -fp /configs/ssh_config ~/.ssh/config
 ssh-keygen -t rsa -N "" -f ~/.ssh/test_key
@@ -36,11 +36,7 @@ echo "PUBLIC_KEY=\"$(cat ~/.ssh/test_key.pub)\"" > .env
 docker-compose pull
 ## 演習資材の配置
 mkdir /training
-cd /training
-mkdir 01_introduction 02_basic 03_practice
-mv /katacoda-scenarios/test/assets/works/* /training/01_introduction/
-mv /katacoda-scenarios/adv1/assets/works/* /training/02_basic/
-mv /katacoda-scenarios/practice/assets/works/* /training/03_practice/
+cp -r /infra-training/assets/* /training
 
 # code-server
 ## インストールと自動起動設定
@@ -54,7 +50,7 @@ code-server --install-extension PKief.material-icon-theme
 ## 設定変更（ポートやパスワードは後から手動で変更）
 mkdir -p /root/.local/share/code-server/User/
 cp -f /configs/settings.json /root/.local/share/code-server/User/settings.json
-cp -f /configs/code-server_config.yaml ~/.config/code-server/config.yaml
+cp -f /configs/code-server_config.yaml /root/.config/code-server/config.yaml
 systemctl restart code-server@root
 
-rm -rf /katacoda-scenarios
+rm -rf /infra-training
