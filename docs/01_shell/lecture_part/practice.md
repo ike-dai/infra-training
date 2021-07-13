@@ -13,7 +13,7 @@ cd /training/shellscript
 - func1が定義されたfunc1.shを実行し結果を出力してみましょう。
 
 ```bash
-./func1.sh
+bash ./func1.sh
 ```
 
 
@@ -87,10 +87,10 @@ echo -e "ccc\nbbb\naaa" | sort
 TZ=Asia/Tokyo date +"%Y-%m-%d %H:%M:%S" --date "1 week ago"
 ```
 
-- findコマンドでtutorialフォルダ以下の.txtのファイルのみを検索してみましょう。
+- findコマンドでカレントディレクトリ以下の.txtのファイルのみを検索してみましょう。
 
 ```bash
-find ./tutorial -name "*.txt"
+find ./ -name "*.txt"
 ```
 
 ## 講義資料p.72
@@ -117,7 +117,29 @@ crontab -l
 ```
 
 ```bash
-cat /var/spool/cron/crontabs/root
+cat /var/spool/cron/root
+```
+
+- cronの定義を実施してみましょう。(5分置きにechoコマンドを実行する定義)
+
+```bash
+crontab -e
+```
+
+```bash
+*/5 * * * * echo "TEST"
+```
+
+上記内容を記入(iコマンドで編集モードに変更後、上記内容を貼り付け)、エスケープでモード変更後、:wqで書き込み。
+
+- 設定されたcron定義を確認してみましょう。
+
+```bash
+crontab -l
+```
+
+```bash
+cat /var/spool/cron/root
 ```
 
 - cronの共通の定義を確認してみましょう。

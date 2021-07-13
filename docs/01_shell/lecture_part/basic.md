@@ -68,7 +68,7 @@ help
 - coreutilsに含まれるコマンドにどのようなものがあるかを見てみましょう。
 
 ```bash
-dpkg -L coreutils | grep bin
+rpm -ql coreutils | grep bin
 ```
 
 ## 講義資料p.28
@@ -84,7 +84,7 @@ dpkg -L coreutils | grep bin
     ```
     - 実行方法3 commandコマンドで実行
     ```bash
-    command sample.sh
+    command ./sample.sh
     ```
 
 ## 講義資料p.31
@@ -95,10 +95,10 @@ dpkg -L coreutils | grep bin
 ls -l sample.sh
 ```
 
-- x権限を外してみましょう。
+- x権限をつけてみましょう。
 
 ```bash
-chmod a-x sample.sh
+chmod a+x sample.sh
 ```
 
 - 再度実行してみましょう。
@@ -112,14 +112,9 @@ chmod a-x sample.sh
     ```
     - 実行方法3 commandコマンドで実行
     ```bash
-    command sample.sh
+    command ./sample.sh
     ```
 
-- x権限を再度付与しましょう。
-
-```bash
-chmod a+x sample.sh
-```
 
 ## 講義資料p.42
 
@@ -136,7 +131,7 @@ cat ./var_echo.sh
 ```
 
 ```bash
-./var_echo.sh
+bash ./var_echo.sh
 ```
 
 - VAR1シェル変数を環境変数化してみましょう。
@@ -146,7 +141,7 @@ export VAR1
 ```
 
 ```bash
-./var_echo.sh
+bash ./var_echo.sh
 ```
 
 ## 講義資料p.48
@@ -158,7 +153,7 @@ ls -l /training/shellscript
 ```
 
 ```bash
-ls -l /traning/shellscript | grep sample
+ls -l /training/shellscript | grep sample
 ```
 
 ## 講義資料p.49
@@ -212,13 +207,13 @@ cat output.log
 - 標準出力・標準エラー出力されるスクリプトを実行してみましょう。
 
 ```bash
-./stdout_stderr.sh
+bash ./stdout_stderr.sh
 ```
 
 - 標準エラー出力をerror.logに出力してみましょう。
 
 ```bash
-./stdout_stderr.sh 2> error.log
+bash ./stdout_stderr.sh 2> error.log
 ```
 
 ```bash
@@ -228,7 +223,7 @@ cat error.log
 - 標準出力と標準エラー出力両方をoutput.logに出力してみましょう。
 
 ```bash
-./stdout_stderr.sh > output.log 2>&1
+bash ./stdout_stderr.sh > output.log 2>&1
 ```
 
 ```bash
